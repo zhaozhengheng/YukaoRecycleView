@@ -8,18 +8,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bawei.yukaoRecycleView.R;
-import com.bawei.yukaoRecycleView.bean.Erji;
+import com.bawei.yukaoRecycleView.bean.Erjixia;
 
 import java.util.List;
 
 /**
  * Created by 1 on 2017/4/1.
  */
-public class LeftApdate extends RecyclerView.Adapter<MyViewHodle>
+public class Apdate extends RecyclerView.Adapter<My>
 {
     private Context context;
-    private List<Erji> list;
-    //private bea be;
+
+    private List<Erjixia> list1;
+    // private  bea.NodesBean nodesBean;
+
+
+
     public interface jiekou{
         void dianji(int position);
     }
@@ -31,30 +35,27 @@ public class LeftApdate extends RecyclerView.Adapter<MyViewHodle>
         this.mjiekou = mjiekou;
     }
 
-    public LeftApdate(Context context, List<Erji> list) {
+    public Apdate(Context context, List<Erjixia> list1) {
         this.context = context;
-        this.list = list;
+        this.list1 = list1;
     }
 
-    public LeftApdate()
+    public Apdate()
     {
         super();
     }
-
     @Override
-    public MyViewHodle onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public My onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_left, parent, false);
-        MyViewHodle myViewHodle = new MyViewHodle(view);
+        My myViewHodle = new My(view);
 
         return myViewHodle;
     }
 
 
     @Override
-    public void onBindViewHolder(MyViewHodle holder, final  int position)
-    {
-        holder.left.setText(list.get(position).getCname());
+    public void onBindViewHolder(My holder,final  int position) {
+        holder.left.setText(list1.get(position).getName());
         holder.left.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -71,14 +72,15 @@ public class LeftApdate extends RecyclerView.Adapter<MyViewHodle>
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list1.size();
     }
 }
-class MyViewHodle extends RecyclerView.ViewHolder{
+class My extends RecyclerView.ViewHolder
+{
     TextView left;
-    public MyViewHodle(View itemView) {
+    public My(View itemView) {
         super(itemView);
-         left = (TextView) itemView.findViewById(R.id.TextView_left);
+        left = (TextView) itemView.findViewById(R.id.TextView_left);
 
     }
 }
