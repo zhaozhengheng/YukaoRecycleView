@@ -77,13 +77,26 @@ public class MainActivity extends AppCompatActivity {
             });*/
             left.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
-            LeftApdate mLeftApdate = new LeftApdate(MainActivity.this,list_yiji);
+            mLeftApdate = new LeftApdate(MainActivity.this,list_yiji);
             left.setAdapter(mLeftApdate);
             mLeftApdate.setMjiekou(new LeftApdate.jiekou() {
                 @Override
                 public void dianji( int position)
                 {
                     mTextView.setText(list_yiji.get(position).getCname());
+                    //改变背景颜色
+                    for(int i=0;i<list_yiji.size();i++)
+                    {
+                        if(i==position)
+                        {
+                            list_yiji.get(i).setBoo(true);
+                        }else
+                        {
+                            list_yiji.get(i).setBoo(false);
+                        }
+                        mLeftApdate.notifyDataSetChanged();
+                    }
+
                     right.setLayoutManager(new GridLayoutManager(MainActivity.this,3));
                     list1 = list_yiji.get(position).getList();
 
@@ -116,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     private Erji e;
     private Erjixia er;
     private List<Erjixia> list1;
+    private LeftApdate mLeftApdate;
 
 
     @Override
@@ -254,6 +268,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     private void initView()
     {

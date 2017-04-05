@@ -9,6 +9,7 @@ public class Erji
 {
     private String cname;
     private List<Erjixia> list;
+    private boolean boo;
 
     public Erji(String cname, List<Erjixia> list) {
         this.cname = cname;
@@ -17,6 +18,14 @@ public class Erji
 
     public Erji() {
         super();
+    }
+
+    public boolean isBoo() {
+        return boo;
+    }
+
+    public void setBoo(boolean boo) {
+        this.boo = boo;
     }
 
     public String getCname() {

@@ -1,10 +1,12 @@
 package com.bawei.yukaoRecycleView.apdate;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bawei.yukaoRecycleView.R;
@@ -52,9 +54,10 @@ public class LeftApdate extends RecyclerView.Adapter<MyViewHodle>
 
 
     @Override
-    public void onBindViewHolder(MyViewHodle holder, final  int position)
+    public void onBindViewHolder(final MyViewHodle holder, final  int position)
     {
         holder.left.setText(list.get(position).getCname());
+
         holder.left.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -63,9 +66,20 @@ public class LeftApdate extends RecyclerView.Adapter<MyViewHodle>
                 if(mjiekou!=null)
                 {
                     mjiekou.dianji(position);
+
                 }
+
             }
         });
+        //改变背景颜色
+        boolean boo = list.get(position).isBoo();
+        if(boo)
+        {
+            holder.left.setSelected(true);
+        }else
+        {
+            holder.left.setSelected(false);
+        }
     }
 
 
@@ -76,9 +90,11 @@ public class LeftApdate extends RecyclerView.Adapter<MyViewHodle>
 }
 class MyViewHodle extends RecyclerView.ViewHolder{
     TextView left;
+    LinearLayout item1;
     public MyViewHodle(View itemView) {
         super(itemView);
          left = (TextView) itemView.findViewById(R.id.TextView_left);
+
 
     }
 }
